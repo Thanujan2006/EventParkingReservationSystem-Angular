@@ -19,7 +19,7 @@ public class Customer
     [Required]
     public string PasswordHash { get; set; } = string.Empty;
 
-    //public CustomerStatus Status { get; set; } = CustomerStatus.Active;
+    public CustomerStatus Status { get; set; } = CustomerStatus.Active;
     public bool EmailVerified { get; set; }
 
     [MaxLength(128)]
