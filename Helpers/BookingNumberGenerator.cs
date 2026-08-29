@@ -2,5 +2,7 @@ namespace WebApplication1.Helpers;
 
 public static class BookingNumberGenerator
 {
-   
+    public static string NewNumber()
+       => $"BKG-{DateTime.UtcNow:yyyy}-{Guid.NewGuid().ToString("N")[..8].ToUpperInvariant()}";
+
 }
