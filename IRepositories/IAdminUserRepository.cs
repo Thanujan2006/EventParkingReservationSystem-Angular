@@ -1,3 +1,4 @@
 using WebApplication1.Models;
 namespace EventParkingReservationSystem.API.IRepositories;
-public interface IAdminUserRepository { }
+
+public interface IAdminUserRepository : IRepository<AdminUser> { }
