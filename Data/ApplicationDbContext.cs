@@ -23,21 +23,21 @@ public class ApplicationDbContext :DbContext
     public DbSet<Payment> Payments => Set<Payment>();
     public DbSet<Notification> Notifications => Set<Notification>();
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Customer>()
-            .HasIndex(x => x.Email)
-            .IsUnique();
+    //    modelBuilder.Entity<Customer>()
+    //        .HasIndex(x => x.Email)
+    //        .IsUnique();
 
-        modelBuilder.Entity<AdminUser>()
-            .HasIndex(x => x.Email)
-            .IsUnique();
+    //    modelBuilder.Entity<AdminUser>()
+    //        .HasIndex(x => x.Email)
+    //        .IsUnique();
 
-        modelBuilder.Entity<EventCategory>()
-            .HasIndex(x => x.Name)
-            .IsUnique();
+    //    modelBuilder.Entity<EventCategory>()
+    //        .HasIndex(x => x.Name)
+    //        .IsUnique();
 
         //modelBuilder.Entity<Seat>()
         //    .HasIndex(x => new { x.EventId, x.SeatNumber })
@@ -98,4 +98,4 @@ public class ApplicationDbContext :DbContext
     }
 
 
-}
+

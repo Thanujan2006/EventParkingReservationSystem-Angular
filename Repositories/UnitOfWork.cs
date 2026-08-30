@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace WebApplication1.Repositories;
 
-public class UnitOfWork{
+public class UnitOfWork:IUnitOfWork{
     private readonly ApplicationDbContext _db;
 
     public UnitOfWork(ApplicationDbContext db)

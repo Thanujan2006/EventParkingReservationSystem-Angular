@@ -9,14 +9,14 @@ public interface IUnitOfWork
     IAdminUserRepository AdminUsers { get; }
     IVenueRepository Venues { get; }
     IEventCategoryRepository EventCategories { get; }
-    IEventRepository Events { get; }
-    ISeatRepository Seats { get; }
-    IParkingSlotRepository ParkingSlots { get; }
-    IBookingRepository Bookings { get; }
-    IBookingSeatRepository BookingSeats { get; }
-    IParkingReservationRepository ParkingReservations { get; }
-    IPaymentRepository Payments { get; }
-    INotificationRepository Notifications { get; }
+    //IEventRepository Events { get; }
+    //ISeatRepository Seats { get; }
+    //IParkingSlotRepository ParkingSlots { get; }
+    //IBookingRepository Bookings { get; }
+    //IBookingSeatRepository BookingSeats { get; }
+    //IParkingReservationRepository ParkingReservations { get; }
+    //IPaymentRepository Payments { get; }
+    //INotificationRepository Notifications { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     Task<IDbContextTransaction> BeginTransactionAsync(
