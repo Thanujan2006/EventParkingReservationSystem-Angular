@@ -11,4 +11,6 @@ public interface ICustomerService
     Task<IReadOnlyList<CustomerResponseDto>> SearchAsync(string? search);
     //Task DeactivateAsync(int id);
     Task ReactivateAsync(int id);
+   
+    
 }
