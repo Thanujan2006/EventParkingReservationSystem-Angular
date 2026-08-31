@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-namespace WebApplication1.DTOs.Venues;
+namespace EventParkingReservationSystem.API.DTOs.Venues;
 public class VenueDto
 {
     [Required, MaxLength(150)] public string Name { get; set; } = string.Empty;

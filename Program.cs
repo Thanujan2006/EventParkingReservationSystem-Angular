@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
-using WebApplication1.Helpers;
-using WebApplication1.Repositories;
-using WebApplication1.Services;
+using EventParkingReservationSystem.API.Helpers;
+using EventParkingReservationSystem.API.Repositories;
+using EventParkingReservationSystem.API.Services;
 
 namespace EventParkingReservationSystem.API
 {

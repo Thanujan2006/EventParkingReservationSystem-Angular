@@ -1,7 +1,7 @@
 using EventParkingReservationSystem.API.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.DTOs.Categories;
+using EventParkingReservationSystem.API.DTOs.Categories;
 
 namespace EventParkingReservationSystem.API.Controllers;
 

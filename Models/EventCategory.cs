@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication1.Models;
+namespace EventParkingReservationSystem.API.Models;
 
 public class EventCategory
 {

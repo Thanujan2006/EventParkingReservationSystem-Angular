@@ -1,4 +1,4 @@
-namespace WebApplication1.Exceptions;
+namespace EventParkingReservationSystem.API.Exceptions;
 
 public class ApiException : Exception
 {

@@ -1,12 +1,12 @@
 using EventParkingReservationSystem.API.IRepositories;
 using EventParkingReservationSystem.API.IServices;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.DTOs.Venues;
-using WebApplication1.Exceptions;
-using WebApplication1.Models;
-using WebApplication1.Repositories;
+using EventParkingReservationSystem.API.DTOs.Venues;
+using EventParkingReservationSystem.API.Exceptions;
+using EventParkingReservationSystem.API.Models;
+using EventParkingReservationSystem.API.Repositories;
 
-namespace WebApplication1.Services;
+namespace EventParkingReservationSystem.API.Services;
 
 public class VenueService : IVenueService
 {

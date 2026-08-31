@@ -2,7 +2,7 @@ using EventParkingReservationSystem.API.IServices;
 using System.Net;
 using System.Net.Mail;
 
-namespace WebApplication1.Services;
+namespace EventParkingReservationSystem.API.Services;
 
 public class EmailService : IEmailService
 {

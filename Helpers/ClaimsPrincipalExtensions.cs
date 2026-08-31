@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace WebApplication1.Helpers;
+namespace EventParkingReservationSystem.API.Helpers;
 
 public static class ClaimsPrincipalExtensions
 {

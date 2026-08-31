@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace WebApplication1.Helpers;
+namespace EventParkingReservationSystem.API.Helpers;
 
 public class TokenService 
 {
