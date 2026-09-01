@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace EventParkingReservationSystem.API.Helpers;
 
-public class TokenService 
+public class TokenService : ITokenService
 {
     private readonly IConfiguration _config;
 

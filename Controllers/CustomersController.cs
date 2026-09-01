@@ -32,27 +32,27 @@ public class CustomersController : ControllerBase
         return Ok(await _service.GetAsync(id));
     }
 
-    //[Authorize(Roles = "Customer")]
-    //[HttpPut("{id:int}")]
-    //public async Task<ActionResult<CustomerResponseDto>> Update(int id, UpdateCustomerDto dto)
-    //{
-    //    if (User.UserId() != id)
-    //        throw new ApiException(403, "You can only update your own profile.");
-    //    return Ok(await _service.UpdateAsync(id, dto));
-    //}
+    [Authorize(Roles = "Customer")]
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<CustomerResponseDto>> Update(int id, UpdateCustomerDto dto)
+    {
+        if (User.UserId() != id)
+            throw new ApiException(403, "You can only update your own profile.");
+        return Ok(await _service.UpdateAsync(id, dto));
+    }
 
     [Authorize(Roles = "Administrator")]
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<CustomerResponseDto>>> Search([FromQuery] string? search)
         => Ok(await _service.SearchAsync(search));
 
-    //[Authorize(Roles = "Administrator")]
-    //[HttpDelete("{id:int}")]
-    //public async Task<IActionResult> Deactivate(int id)
-    //{
-    //    await _service.DeactivateAsync(id);
-    //    return Ok(new { message = "Customer deactivated." });
-    //}
+    [Authorize(Roles = "Administrator")]
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Deactivate(int id)
+    {
+        await _service.DeactivateAsync(id);
+        return Ok(new { message = "Customer deactivated." });
+    }
 
     [Authorize(Roles = "Administrator")]
     [HttpPost("{id:int}/reactivate")]

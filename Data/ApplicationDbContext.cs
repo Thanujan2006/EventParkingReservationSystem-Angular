@@ -1,5 +1,4 @@
 
-//using Microsoft.EntityFrameworkCore;
 
 using Microsoft.EntityFrameworkCore;
 using EventParkingReservationSystem.API.Models;
@@ -33,6 +32,7 @@ public class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<AdminUser>()
             .HasIndex(x => x.Email)
+
           .IsUnique();
 
         modelBuilder.Entity<EventCategory>()
@@ -47,52 +47,83 @@ public class ApplicationDbContext : DbContext
              .HasIndex(x => new { x.EventId, x.SlotNumber })
           .IsUnique();
 
-        //modelBuilder.Entity<Booking>()
-        // .HasIndex(x => x.BookingNumber)
-        //.IsUnique();
+        modelBuilder.Entity<Booking>()
+         .HasIndex(x => x.BookingNumber)
+       .IsUnique();
 
-        //modelBuilder.Entity<BookingSeat>()
-        //    .HasIndex(x => new { x.BookingId, x.SeatId })
-        //    .IsUnique();
+          
 
-        //modelBuilder.Entity<Payment>()
-        //    .HasIndex(x => x.BookingId)
-        //    .IsUnique();
+        modelBuilder.Entity<EventCategory>()
+            .HasIndex(x => x.Name)
+            .IsUnique();
+
+        modelBuilder.Entity<Seat>()
+            .HasIndex(x => new { x.EventId, x.SeatNumber })
+            .IsUnique();
+
+        modelBuilder.Entity<ParkingSlot>()
+            .HasIndex(x => new { x.EventId, x.SlotNumber })
+            .IsUnique();
+
+        modelBuilder.Entity<Booking>()
+            .HasIndex(x => x.BookingNumber)
+            .IsUnique();
+
+
+        modelBuilder.Entity<BookingSeat>()
+            .HasIndex(x => new { x.BookingId, x.SeatId })
+            .IsUnique();
+
+        modelBuilder.Entity<Payment>()
+            .HasIndex(x => x.BookingId)
+            .IsUnique();
 
         modelBuilder.Entity<Event>().Property(x => x.TicketPrice).HasPrecision(10, 2);
         modelBuilder.Entity<Event>().Property(x => x.ParkingFee).HasPrecision(10, 2);
         modelBuilder.Entity<Seat>().Property(x => x.Price).HasPrecision(10, 2);
-        //modelBuilder.Entity<Booking>().Property(x => x.TotalAmount).HasPrecision(10, 2);
-        //modelBuilder.Entity<ParkingReservation>().Property(x => x.FeeAtReservation).HasPrecision(10, 2);
-        //modelBuilder.Entity<Payment>().Property(x => x.Amount).HasPrecision(10, 2);
 
-        //modelBuilder.Entity<Booking>()
-        //    .HasOne(x => x.Payment)
-        //    .WithOne(x => x.Booking)
-        //    .HasForeignKey<Payment>(x => x.BookingId)
-        //    .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<Booking>().Property(x => x.TotalAmount).HasPrecision(10, 2);
+        modelBuilder.Entity<ParkingReservation>().Property(x => x.FeeAtReservation).HasPrecision(10, 2);
+      modelBuilder.Entity<Payment>().Property(x => x.Amount).HasPrecision(10, 2);
 
-        //modelBuilder.Entity<BookingSeat>()
-        //    .HasOne(x => x.Seat)
-        //    .WithMany(x => x.BookingSeats)
-        //    .HasForeignKey(x => x.SeatId)
-        //    .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Booking>().Property(x => x.TotalAmount).HasPrecision(10, 2);
+        modelBuilder.Entity<ParkingReservation>().Property(x => x.FeeAtReservation).HasPrecision(10, 2);
+        modelBuilder.Entity<Payment>().Property(x => x.Amount).HasPrecision(10, 2);
+
+
+        modelBuilder.Entity<Booking>()
+            .HasOne(x => x.Payment)
+            .WithOne(x => x.Booking)
+            .HasForeignKey<Payment>(x => x.BookingId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<BookingSeat>()
+            .HasOne(x => x.Seat)
+            .WithMany(x => x.BookingSeats)
+            .HasForeignKey(x => x.SeatId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<ParkingReservation>()
             .HasOne(x => x.ParkingSlot)
+
           .WithMany(x => x.ParkingReservations)
+
             .HasForeignKey(x => x.ParkingSlotId)
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<Event>()
+
            .HasOne(x => x.Venue)
+
             .WithMany(x => x.Events)
             .HasForeignKey(x => x.VenueId)
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<Event>()
             .HasOne(x => x.EventCategory)
+
            .WithMany(x => x.Events)
+
             .HasForeignKey(x => x.EventCategoryId)
             .OnDelete(DeleteBehavior.Restrict);
     }

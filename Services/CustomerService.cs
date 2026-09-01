@@ -74,19 +74,19 @@ public class CustomerService : ICustomerService
         return Map(customer, customer.Bookings.Count);
     }
 
-    //public async Task<CustomerResponseDto> UpdateAsync(int id, UpdateCustomerDto dto)
-    //{
-    //    var customer = await _uow.Customers.GetByIdAsync(id)
-    //                   ?? throw new ApiException(404, "Customer record not found.");
+    public async Task<CustomerResponseDto> UpdateAsync(int id, UpdateCustomerDto dto)
+    {
+        var customer = await _uow.Customers.GetByIdAsync(id)
+                       ?? throw new ApiException(404, "Customer record not found.");
 
-    //    customer.Name = dto.Name.Trim();
-    //    customer.Phone = dto.Phone.Trim();
-    //    customer.UpdatedAtUtc = DateTime.UtcNow;
+        customer.Name = dto.Name.Trim();
+        customer.Phone = dto.Phone.Trim();
+        customer.UpdatedAtUtc = DateTime.UtcNow;
 
-    //    await _uow.SaveChangesAsync();
-    //    var bookingCount = await _uow.Bookings.Query().CountAsync(x => x.CustomerId == id);
-    //    return Map(customer, bookingCount);
-    //}
+        await _uow.SaveChangesAsync();
+        var bookingCount = await _uow.Bookings.Query().CountAsync(x => x.CustomerId == id);
+        return Map(customer, bookingCount);
+    }
 
     public async Task<IReadOnlyList<CustomerResponseDto>> SearchAsync(string? search)
     {
@@ -106,25 +106,25 @@ public class CustomerService : ICustomerService
             .ToListAsync();
     }
 
-    //public async Task DeactivateAsync(int id)
-    //{
-    //    var customer = await _uow.Customers.GetByIdAsync(id)
-    //        ?? throw new ApiException(404, "Customer record not found.");
+    public async Task DeactivateAsync(int id)
+    {
+        var customer = await _uow.Customers.GetByIdAsync(id)
+            ?? throw new ApiException(404, "Customer record not found.");
 
-    //    var today = DateOnly.FromDateTime(DateTime.UtcNow);
-    //    var activeFuture = await _uow.Bookings.Query()
-    //        .Include(x => x.Event)
-    //        .CountAsync(x => x.CustomerId == id
-    //            && (x.Status == BookingStatus.Pending || x.Status == BookingStatus.Confirmed)
-    //            && x.Event.EventDate >= today);
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+        var activeFuture = await _uow.Bookings.Query()
+            .Include(x => x.Event)
+            .CountAsync(x => x.CustomerId == id
+                && (x.Status == BookingStatus.Pending || x.Status == BookingStatus.Confirmed)
+                && x.Event.EventDate >= today);
 
-    //    if (activeFuture > 0)
-    //        throw new ApiException(400, $"Cannot deactivate: {activeFuture} active future booking(s) exist.");
+        if (activeFuture > 0)
+            throw new ApiException(400, $"Cannot deactivate: {activeFuture} active future booking(s) exist.");
 
-    //    customer.Status = CustomerStatus.Deactivated;
-    //    customer.UpdatedAtUtc = DateTime.UtcNow;
-    //    await _uow.SaveChangesAsync();
-    //}
+        customer.Status = CustomerStatus.Deactivated;
+        customer.UpdatedAtUtc = DateTime.UtcNow;
+        await _uow.SaveChangesAsync();
+    }
 
     public async Task ReactivateAsync(int id)
     {
