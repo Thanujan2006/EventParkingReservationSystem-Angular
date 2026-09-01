@@ -1,4 +1,4 @@
-using WebApplication1.DTOs.Seats;
+using EventParkingReservationSystem.API.DTOs.Seats;
 
 namespace EventParkingReservationSystem.API.IServices;
 

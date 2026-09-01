@@ -7,9 +7,9 @@ public interface ICustomerService
 {
     Task<CustomerResponseDto> RegisterAsync(RegisterCustomerDto dto);
     Task<CustomerResponseDto> GetAsync(int id);
-    //Task<CustomerResponseDto> UpdateAsync(int id, UpdateCustomerDto dto);
+    Task<CustomerResponseDto> UpdateAsync(int id, UpdateCustomerDto dto);
     Task<IReadOnlyList<CustomerResponseDto>> SearchAsync(string? search);
-    //Task DeactivateAsync(int id);
+    Task DeactivateAsync(int id);
     Task ReactivateAsync(int id);
    
     

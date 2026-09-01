@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-namespace WebApplication1.DTOs.Parking;
+namespace EventParkingReservationSystem.API.DTOs.Parking;
 public class CreateParkingLayoutDto
 {
     [Range(1, 1000)] public int SlotCount { get; set; }
