@@ -50,8 +50,8 @@ public class CategoryService : ICategoryService
         var category = await _uow.EventCategories.GetByIdAsync(id)
             ?? throw new ApiException(404, "Category not found.");
 
-        //if (await _uow.Events.Query().AnyAsync(x => x.EventCategoryId == id))
-        //    throw new ApiException(409, "This category is assigned to existing events.");
+        if (await _uow.Events.Query().AnyAsync(x => x.EventCategoryId == id))
+            throw new ApiException(409, "This category is assigned to existing events.");
 
         _uow.EventCategories.Remove(category);
         await _uow.SaveChangesAsync();

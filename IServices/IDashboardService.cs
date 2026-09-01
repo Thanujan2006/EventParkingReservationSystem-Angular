@@ -1,7 +1,9 @@
-using WebApplication1.DTOs.Dashboard;
+using EventParkingReservationSystem.API.DTOs.Dashboard;
 
-namespace EventParkingReservationSystem.API.IServices;
+namespace EventParkingReservationSystem.API.Services;
 
 public interface IDashboardService
 {
+    Task<CustomerDashboardDto> GetCustomerAsync(int customerId);
+    Task<AdminDashboardDto> GetAdminAsync();
 }

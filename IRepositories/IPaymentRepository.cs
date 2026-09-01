@@ -1,2 +1,4 @@
-namespace EventParkingReservationSystem.API.IRepositories;
-public interface IPaymentRepository  { }
+using EventParkingReservationSystem.API.IRepositories;
+using EventParkingReservationSystem.API.Models;
+namespace EventParkingReservationSystem.API.Repositories;
+public interface IPaymentRepository : IRepository<Payment> { }

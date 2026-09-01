@@ -1,6 +1,6 @@
 using EventParkingReservationSystem.API.Enums;
 using System.ComponentModel.DataAnnotations;
-using WebApplication1.Enums;
+using EventParkingReservationSystem.API.Enums;
 
 namespace EventParkingReservationSystem.API.Models;
 

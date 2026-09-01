@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-namespace WebApplication1.DTOs.Seats;
+namespace EventParkingReservationSystem.API.DTOs.Seats;
 public class CreateSeatMapDto
 {
     [Range(1, 100)] public int Rows { get; set; }
