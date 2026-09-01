@@ -2,14 +2,14 @@ using EventParkingReservationSystem.API.DTOs.Customers;
 using EventParkingReservationSystem.API.IRepositories;
 using EventParkingReservationSystem.API.IServices;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.DTOs.Customers;
-using WebApplication1.Enums;
-using WebApplication1.Exceptions;
-using WebApplication1.Helpers;
-using WebApplication1.Models;
-using WebApplication1.Repositories;
 
-namespace WebApplication1.Services;
+using EventParkingReservationSystem.API.Enums;
+using EventParkingReservationSystem.API.Exceptions;
+using EventParkingReservationSystem.API.Helpers;
+using EventParkingReservationSystem.API.Models;
+using EventParkingReservationSystem.API.Repositories;
+
+namespace EventParkingReservationSystem.API.Services;
 
 public class CustomerService : ICustomerService
 {

@@ -1,6 +1,6 @@
-using WebApplication1.Enums;
+using EventParkingReservationSystem.API.Enums;
 
-namespace WebApplication1.Models;
+namespace EventParkingReservationSystem.API.Models;
 
 public class Payment
 {

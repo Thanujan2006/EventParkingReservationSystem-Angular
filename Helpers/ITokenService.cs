@@ -1,4 +1,4 @@
-namespace WebApplication1.Helpers;
+namespace EventParkingReservationSystem.API.Helpers;
 
 public interface ITokenService
 {

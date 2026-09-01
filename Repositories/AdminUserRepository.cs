@@ -2,8 +2,8 @@
 using EventParkingReservationSystem.API.Data;
 using EventParkingReservationSystem.API.IRepositories;
 using EventParkingReservationSystem.API.Repositories;
-using WebApplication1.Models;
-namespace WebApplication1.Repositories;
+using EventParkingReservationSystem.API.Models;
+namespace EventParkingReservationSystem.API.Repositories;
 
 public class AdminUserRepository : Repository<AdminUser>, IAdminUserRepository
 {

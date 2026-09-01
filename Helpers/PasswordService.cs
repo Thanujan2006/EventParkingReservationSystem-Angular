@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace WebApplication1.Helpers;
+namespace EventParkingReservationSystem.API.Helpers;
 
 public class PasswordService : IPasswordService
 {
