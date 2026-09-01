@@ -1,7 +1,10 @@
+using EventParkingReservationSystem.API.Data;
 using EventParkingReservationSystem.API.IRepositories;
-using WebApplication1.Models;
+using EventParkingReservationSystem.API.Models;
+using EventParkingReservationSystem.API.Repositories;
 namespace WebApplication1.Repositories;
-public class BookingSeatRepository : IBookingSeatRepository
+public class BookingSeatRepository : Repository <BookingSeat>, IBookingSeatRepository
 {
-  
+    public BookingSeatRepository(ApplicationDbContext db) : base(db) { }
+
 }
