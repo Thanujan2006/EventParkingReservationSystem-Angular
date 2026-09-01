@@ -7,6 +7,7 @@ using EventParkingReservationSystem.API.Middleware;
 using EventParkingReservationSystem.API.Repositories;
 using EventParkingReservationSystem.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -56,9 +57,14 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
-
+// Register DbContext + Run SQL Script
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+});
+
+
 
 var jwtKey = builder.Configuration["Jwt:Key"]
     ?? throw new InvalidOperationException("Jwt:Key is missing.");
@@ -86,7 +92,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
-        policy.WithOrigins("http://localhost:5500", "http://127.0.0.1:5500")
+        policy.WithOrigins("http://localhost:5278", "http://127.0.0.1:5500")
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
@@ -112,6 +118,8 @@ builder.Services.AddHostedService<BookingExpiryService>();
 
 var app = builder.Build();
 
+
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseSwagger();
@@ -122,6 +130,7 @@ app.UseAuthentication();
 app.UseMiddleware<ActiveCustomerMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
+app.UseStaticFiles();
 
 using (var scope = app.Services.CreateScope())
 {
