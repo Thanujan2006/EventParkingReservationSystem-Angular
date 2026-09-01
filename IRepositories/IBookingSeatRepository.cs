@@ -1,3 +1,6 @@
-using WebApplication1.Models;
-namespace EventParkingReservationSystem.API.IRepositories;
-public interface IBookingSeatRepository { }
+using EventParkingReservationSystem.API.Models;
+
+namespace EventParkingReservationSystem.API.IRepositories
+{
+    public interface IBookingSeatRepository : IRepository<BookingSeat> { }
+}

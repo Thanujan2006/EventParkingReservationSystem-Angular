@@ -1,15 +1,16 @@
 
 using EventParkingReservationSystem.API.Data;
+using EventParkingReservationSystem.API.Helpers;
 using EventParkingReservationSystem.API.IRepositories;
 using EventParkingReservationSystem.API.IServices;
+using EventParkingReservationSystem.API.Repositories;
+using EventParkingReservationSystem.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
-using EventParkingReservationSystem.API.Helpers;
-using EventParkingReservationSystem.API.Repositories;
-using EventParkingReservationSystem.API.Services;
+using WebApplication1.Services;
 
 namespace EventParkingReservationSystem.API
 {
@@ -98,7 +99,9 @@ namespace EventParkingReservationSystem.API
                 builder.Services.AddScoped<ICustomerService, CustomerService>();
                 builder.Services.AddScoped<IVenueService, VenueService>();
                 builder.Services.AddScoped<ICategoryService, CategoryService>();
-
+                //builder.Services.AddScoped<IEventService, EventService>();
+                //builder.Services.AddScoped<ISeatService, SeatService>();
+                //builder.Services.AddScoped<IParkingService, ParkingService>();
 
                 var app = builder.Build();
 
