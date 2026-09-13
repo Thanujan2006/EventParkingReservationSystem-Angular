@@ -1,8 +1,12 @@
 
+using EventParkingReservationSystem.API.Data;
 using EventParkingReservationSystem.API.IRepositories;
-using WebApplication1.Models;
-namespace WebApplication1.Repositories;
-public class EventCategoryRepository : IEventCategoryRepository
+using EventParkingReservationSystem.API.Repositories;
+using EventParkingReservationSystem.API.Models;
+namespace EventParkingReservationSystem.API.Repositories;
+
+public class EventCategoryRepository : Repository<EventCategory>, IEventCategoryRepository
 {
-   
+    public EventCategoryRepository(ApplicationDbContext db) : base(db) { }
 }
+
